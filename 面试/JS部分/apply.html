@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>apply</title>
+	</head>
+	<body>
+		<script>
+			obj = {
+				a: 1
+			}
+			function f() {
+				// console.log([...arguments].map(i => i))
+			}
+			// f.apply(obj, null)
+
+			Function.prototype.myApply = function(ctx = window, ...rest) {
+				ctx.fn = this
+				let result = ctx.fn(rest[0])
+				console.log(rest[0])
+				delete ctx.fn
+				return result
+			}
+			f.myApply(obj, null)
+		</script>
+	</body>
+</html>

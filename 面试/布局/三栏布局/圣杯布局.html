@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>圣杯布局</title>
+		<style>
+			.header,
+			.footer {
+				width: 100%;
+				height: 100px;
+				background-color: gray;
+			}
+			.container {
+				overflow: hidden;
+				padding: 0 200px;
+			}
+			.left {
+				position: relative;
+				left: -200px;
+				width: 200px;
+				height: 200px;
+				background-color: green;
+				float: left;
+				margin-left: -100%;
+				overflow: hidden;
+			}
+			.right {
+				position: relative;
+				left: 200px;
+				margin-left: -200px;
+				width: 200px;
+				height: 200px;
+				background-color: hotpink;
+				float: left;
+			}
+			.middle {
+				position: relative;
+				width: 100%;
+				height: 200px;
+				background-color: lawngreen;
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">header</div>
+		<div class="container">
+			<div class="middle">
+				<h4>middle</h4>
+				<p>
+					middlemiddlemiddlemiddlemiddlemiddlemiddlemiddle
+					middlemiddlemiddlemiddlemiddlemiddlemiddlemiddle
+					middlemiddlemiddlemiddlemiddlemiddlemiddlemiddle
+					middlemiddlemiddlemiddlemiddlemiddlemiddlemiddle
+					middlemiddlemiddlemiddlemiddlemiddlemiddlemiddle
+					middlemiddlemiddlemiddlemiddle
+				</p>
+			</div>
+			<div class="left">
+				<h4>left</h4>
+				<p>
+					leftleftleftleftleftleftleftleftleftleftleftleft
+					leftleftleftleftleftleftleftleftleftleftleftleft
+					leftleftleftleftleftleftleftleftleftleftleftleft
+				</p>
+			</div>
+			<div class="right">
+				<h4>right</h4>
+				<p>
+					rightrightrightrightrightrightrightrightrightright
+					rightrightrightrightrightrightrightrightrightright
+					rightrightrightrightrightrightright
+				</p>
+			</div>
+		</div>
+		<div class="footer">footer</div>
+	</body>
+</html>

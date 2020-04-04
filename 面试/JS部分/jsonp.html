@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>jsonp</title>
+	</head>
+	<body>
+		<script>
+			function jsonp({ url, params }) {
+				return new Promise((resolve, reject) => {
+					const cb =
+						'cb' +
+						Math.random()
+							.toString(36)
+							.slice(-8)
+					const script = document.createElement('script')
+					script.id = cb
+					if (url.indexOf('?') > 0) {
+						script.src =
+							url +
+							(params
+								? '&' +
+								  Object.keys(params)
+										.map(k => k + '=' + params[k])
+										.join('&')
+								: '') +
+							'&callback=' +
+							cb
+					} else {
+						script.src =
+							url +
+							'?' +
+							(params
+								? '&' +
+								  Object.keys(params)
+										.map(k => k + '=' + params[k])
+										.join('&')
+								: '') +
+							'&callback=' +
+							cb
+					}
+
+					window[cb] = function(data) {
+						resolve(data)
+						document.body.removeChild(script)
+					}
+
+					document.body.appendChild(script)
+				})
+			}
+
+			jsonp({ url: 'http://developer.duyiedu.com/edu/testJsonp' }).then(res =>
+				console.log(res)
+			)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>获取所有的标签</title>
+	</head>
+	<body>
+		<div>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<div><i></i><i></i></div>
+		<div>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		<div></div>
+		<div></div>
+
+		<script>
+			const all = document.querySelectorAll('*')
+			const num = new Set(...all).map(ele => ele.tagName).size
+			console.log(num)
+		</script>
+	</body>
+</html>
