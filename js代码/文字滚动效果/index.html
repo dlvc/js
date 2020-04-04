@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文字滚动效果</title>
+    <style>
+        .container {
+            background: #b3effe;
+            height: 50px;
+            padding: 10px 20px;
+            box-sizing: border-box;
+        }
+        .left {
+            float: left;
+            height: 30px;
+            line-height: 30px;
+        }
+        .title::after {
+            content: '|';
+            margin-left: 20px;
+            font-size: 27px;
+            vertical-align: -5px;
+            color: #ccc;
+        }
+        .left ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            margin-left: 20px;
+            height: 30px;
+            overflow: hidden;
+        }
+        .left ul li {
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left title">
+            最新公告
+        </div>
+        <div class="left">
+            <ul>
+                <li>1.Lorem ipsum dolor sit.</li>
+                <li>2.Eius nostrum eaque non!</li>
+                <li>3.Doloremque quia similique error?</li>
+                <li>4.Pariatur ducimus soluta debitis?</li>
+                <li>5.Nesciunt perferendis beatae dolorum?</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="../plugin/tools.js"></script>
+    <script src="../plugin/animate.js"></script>
+    <script>
+        const ul = document.querySelector('.left ul');
+        const height = 30;
+        let curTop = 0; //由于浏览器中scrollTop中取值不正确
+        // 复制第一个li
+        function cloneFirstLi() {
+            const firstLi = ul.children[0].cloneNode(true);
+            ul.appendChild(firstLi);
+        }
+
+        cloneFirstLi();
+
+        // 开始滚动
+        function startScroll() {
+            setInterval(scroll, 2000);
+        }
+
+        function scroll() {
+            const animate = new myPlugin.Animate({
+                total: 500,
+                begin: {
+                    top: curTop
+                },
+                end: {
+                    top: curTop + height
+                },
+                onmove() {
+                    curTop = this.curData.top;
+                    ul.scrollTop = curTop;
+                },
+                onover() {
+                    if(ul.srcollHeight - height === curTop) {
+                        curTop = 0;
+                        ul.scrollTop = curTop;
+                    }
+                }
+            });
+            animate.start();
+        }
+
+        startScroll();
+
+    </script>
+</body>
+</html>

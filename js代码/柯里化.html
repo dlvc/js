@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 柯里化函数： 固定某个函数的一些参数，得到该函数剩余参数的一个新函数，如果没有剩余参数，测调用
+        
+        /**
+         * 柯里化函数
+         * 
+        */
+        const curry = function (func) {
+            // 得到从下标1开始的参数
+            const args = Array.prototype.slice.call(arguments, 1);
+            const that = this;
+            return function () {
+                // 当前调用的参数
+                const curArgs = Array.from(arguments);
+                const totalArgs = args.concat(curArgs);
+                if(totalArgs.length >= func.length) {
+                    //参数数量够了
+                    return func.apply(null, totalArgs);
+                }else {
+                    // 参数数量不够
+                    // 把func添加到totalArgs的首位
+                    totalArgs.unshift(func);
+                    return curry.apply(that, totalArgs);
+                }
+            }
+        }
+
+        function f (x, y, z) {
+            return (x + y) * z;
+        }
+        const g = curry(f, 2);
+        const y = g(4);
+        console.log(y(6));
+    </script>
+</body>
+</html>

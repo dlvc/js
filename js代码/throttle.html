@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div>0</div>
+		<button>click</button>
+		<script>
+			const div = document.querySelector('div')
+			const btn = document.querySelector('button')
+
+			btn.onclick = throttle(click, 1000)
+			function click(e) {
+				div.innerText = 1 + +div.innerText
+				console.log(this, e)
+			}
+
+			function throttle(hander, wait) {
+				let lastTime = 0
+				return function() {
+					const args = arguments
+					let nowTime = new Date().getTime()
+					if (nowTime - lastTime > wait) {
+						hander.apply(this, args)
+						lastTime = nowTime
+					}
+				}
+			}
+
+			// 函数节流
+			// 计时器 等待time后执行
+			// const throttle = function (callback, time) {
+			//     let timer;
+			//     return function () {
+			//         if(timer) {
+			//             return;
+			//         }
+			//         const args = arguments;
+			//         timer = setTimeout(function () {
+			//             callback.apply(null, args);
+			//             timer = null;
+			//         }, time);
+			//     }
+			// }
+
+			// 时间戳 立即执行
+			// const throttle = function (callback, time) {
+			//     let t;
+			//     return function () {
+			//         if(!t || new Date().getTime() - t >= time) {
+			//             callback.apply(null, arguments);
+			//             t = new Date().getTime();
+			//         }
+			//     }
+			// }
+
+			// function test() {
+			//     console.log('message');
+			// }
+			// const handle = throttle(test, 1000);
+			// for(let i = 0; i < 10; i ++) {
+			//     handle();
+			// }
+		</script>
+	</body>
+</html>

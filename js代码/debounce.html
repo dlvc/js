@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<input type="text" id="input" />
+		<script>
+			const inp = document.querySelector('#input')
+
+			function ajax(e) {
+				console.log(inp.value)
+				console.log(this, e)
+			}
+
+			inp.oninput = debounce(ajax, 1000)
+
+			function debounce(hander, delay) {
+				let timer = null
+				return function() {
+					const _self = this
+					const _args = arguments
+					clearTimeout(timer)
+					timer = setTimeout(function() {
+						hander.apply(_self, _args)
+					}, delay)
+				}
+			}
+
+			// 函数防抖
+
+			// const debounce = function (callback, time) {
+			//     let timer;
+			//     return function () {
+			//         timer ? clearTimeout(timer) : '';
+			//         const args = arguments;
+			//         timer = setTimeout(() => {
+			//             callback.apply(null, args);
+			//         }, time);
+			//     }
+			// }
+
+			// const input = document.getElementById('input')
+			// const str = 'ss'
+			// const handle = debounce(val => {
+			// 	console.log(val)
+			// }, 1000)
+			// input.oninput = function() {
+			// 	handle(str)
+			// }
+			// input.oninput = function () {
+			//     console.log('a');
+			// }
+		</script>
+	</body>
+</html>

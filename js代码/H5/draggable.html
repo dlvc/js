@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>拖拽</title>
+		<style>
+			.wrapper {
+				width: 800px;
+				height: 600px;
+				border: 1px solid #000;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.box {
+				width: 200px;
+				height: 500px;
+				border: 1px solid #f40;
+				margin-right: 100px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: space-around;
+			}
+			.box1,
+			.box2 {
+				width: 180px;
+				height: 100px;
+				background-color: #f003f3;
+			}
+			.drop {
+				width: 200px;
+				height: 500px;
+				border: 1px solid #f40;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="box">
+				<div draggable="true" class="box1"></div>
+				<div draggable="true" class="box2"></div>
+			</div>
+			<div class="drop"></div>
+		</div>
+
+		<script>
+			const box1 = document.querySelector('.box1')
+			const box2 = document.querySelector('.box2')
+
+			box1.ondragstart = function(e) {
+				console.log(e, '====')
+			}
+			box1.ondragend = function(e) {
+				console.log(e)
+			}
+			box1.ondrag = function(e) {
+				console.log(e)
+			}
+		</script>
+	</body>
+</html>

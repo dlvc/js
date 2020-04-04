@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function clone(target, deep) {
+            if (Array.isArray(target)) {
+                //复制数组
+                if(deep) {
+                    var newArray = [];
+                    for(let i = 0; i < target.length; i ++) {
+                        newArray.push(clone(target[i], deep));
+                    }
+                    return newArray;
+                }else {
+                    return target.slice();
+                }
+            } else if (typeof target === 'object') {
+                // 处理对象
+                let newTarget = {};
+                for (let prop in target) {
+                    if(deep) {
+                        newTarget[prop] = clone(target[prop], deep);
+                    }else {
+                        newTarget[prop] = target[prop];
+                    }
+                }
+                return newTarget;
+            }else {
+                // 函数原始类型不处理
+                return target;
+            }
+
+        }
+        const arr = [1, [2,3], [4, [5, 6]]];
+        const newArr = clone(arr, true);
+    </script>
+
+</body>
+
+</html>
