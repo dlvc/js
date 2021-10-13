@@ -89,6 +89,11 @@
   resolved "https://registry.nlark.com/@types/retry/download/@types/retry-0.12.1.tgz?cache=0&sync_timestamp=1629709126376&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fretry%2Fdownload%2F%40types%2Fretry-0.12.1.tgz#d8f1c0d0dc23afad6dc16a9e993a0865774b4065"
   integrity sha1-2PHA0Nwjr61twWqemToIZXdLQGU=
 
+"@types/three@^0.131.0":
+  version "0.131.0"
+  resolved "https://registry.nlark.com/@types/three/download/@types/three-0.131.0.tgz?cache=0&sync_timestamp=1629710220687&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fthree%2Fdownload%2F%40types%2Fthree-0.131.0.tgz#98f59887b05f71e665cf2fbdf04e0e4ceb9f89b6"
+  integrity sha1-mPWYh7BfceZlzy+98E4OTOufibY=
+
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"
   resolved "https://registry.nlark.com/@webassemblyjs/ast/download/@webassemblyjs/ast-1.11.1.tgz?cache=0&sync_timestamp=1625473459015&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40webassemblyjs%2Fast%2Fdownload%2F%40webassemblyjs%2Fast-1.11.1.tgz#2bfd767eae1a6996f432ff7e8d7fc75679c0b6a7"
@@ -2359,6 +2364,11 @@ terser@^5.7.2:
     commander "^2.20.0"
     source-map "~0.7.2"
     source-map-support "~0.5.19"
+
+three@^0.132.2:
+  version "0.132.2"
+  resolved "https://registry.nlark.com/three/download/three-0.132.2.tgz?cache=0&sync_timestamp=1630061111664&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fthree%2Fdownload%2Fthree-0.132.2.tgz#95eb1856147237c03e887cbbe56f964b6fb40b5e"
+  integrity sha1-lesYVhRyN8A+iHy75W+WS2+0C14=
 
 thunky@^1.0.2:
   version "1.1.0"
